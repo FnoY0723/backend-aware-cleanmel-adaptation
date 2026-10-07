@@ -1,0 +1,3 @@
+# Isolated CPU regression checks only, not the full inference environment.
+torch==2.5.1
+numpy==1.26.4

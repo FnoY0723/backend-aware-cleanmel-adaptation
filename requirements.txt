@@ -1,0 +1,13 @@
+torch==2.5.1
+torchaudio==2.5.1
+pytorch-lightning==2.6.1
+lightning==2.6.5
+modelscope==1.38.1
+numpy==1.24.4
+scipy==1.15.3
+PyYAML==6.0.2
+mamba-ssm==2.2.4
+kaldiio
+typeguard==4.6.0
+packaging
+soundfile

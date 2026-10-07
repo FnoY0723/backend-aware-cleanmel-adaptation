@@ -1,0 +1,23 @@
+{
+  "retrieved": "2026-10-06",
+  "local_file": "src/espnet2/asr/frontend/Conv_TasNet.py",
+  "local_sha256": "de17915bc121d3a2d3f75459fdff5efe29e625d65c420064b8a5dec32f7975ca",
+  "matching_upstream_url": "https://raw.githubusercontent.com/JusperLee/Conv-TasNet/1d05c4730e59034a0f3dfc8d0ee987f9988820b5/Conv-TasNet_lightning/model.py",
+  "checked_upstream_commit": "1d05c4730e59034a0f3dfc8d0ee987f9988820b5",
+  "upstream_file_sha256": "c9d9516d5440063900afa99c613e75cea2632ec77dfeca33b030e24cfcb149dd",
+  "same_header": true,
+  "identical_ast_definitions": [
+    "ChannelWiseLayerNorm",
+    "GlobalChannelLayerNorm",
+    "select_norm",
+    "Conv1D_Block",
+    "TCN",
+    "Separation",
+    "Encoder",
+    "Decoder",
+    "check_parameters"
+  ],
+  "line_sequence_similarity": 0.872,
+  "license_or_notice_files_found_in_checked_upstream_tree": [],
+  "interpretation": "Strong matching implementation evidence, not proof of the exact historical experimental checkout. No GitHub code license established; separate hosted-model licensing is not substituted."
+}

@@ -1,0 +1,40 @@
+# Configuration deltas relative to configs/verified/funasr_prop.yaml.
+# These keys map to the model and preencoder options in the included ESPnet overlay.
+
+proposed:
+  model_conf:
+    ctc_weight: 1.0
+    adptor_target_source: noisy
+    adptor_weight_start: 1.0
+    adptor_weight_end: 1.0
+  preencoder: linear
+
+clean_target:
+  model_conf:
+    adptor_target_source: clean
+
+ctc_only:
+  model_conf:
+    adptor_weight_start: 0.0
+    adptor_weight_end: 0.0
+
+mse_only:
+  model_conf:
+    # In the archived wrapper, a value >2 selects the MSE-only branch.
+    adptor_weight_start: 3.0
+    adptor_weight_end: 3.0
+
+stop_mse_gradient_to_cleanmel:
+  model_conf:
+    stop_mse_grad_to_frontend: true
+
+linear_interpolation_only:
+  # The interpolation.py implementation is the residual Adapter with its
+  # learnable correction removed.
+  preencoder: interpolation
+
+interpolation_plus_feed_forward:
+  preencoder: interpolation_linear
+
+convolution_without_residual:
+  preencoder: linear_noresidule

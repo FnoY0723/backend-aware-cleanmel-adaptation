@@ -1,0 +1,47 @@
+[
+  {
+    "repository": "Audio-WestlakeU/CleanMel",
+    "license_file_url": "https://raw.githubusercontent.com/Audio-WestlakeU/CleanMel/main/LICENSE",
+    "file_sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+    "license": "Apache License, Version 2.0",
+    "retrieved": "2026-10-06",
+    "local_file": "Audio-WestlakeU__CleanMel__LICENSE.txt",
+    "scope": "Current upstream license text only; not evidence of the historical experimental revision or a license grant for all files in this package."
+  },
+  {
+    "repository": "QwenAudio/Fun-ASR",
+    "license_file_url": "https://raw.githubusercontent.com/QwenAudio/Fun-ASR/main/LICENSE",
+    "file_sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+    "license": "Apache License, Version 2.0",
+    "retrieved": "2026-10-06",
+    "local_file": "QwenAudio__Fun-ASR__LICENSE.txt",
+    "scope": "Current upstream license text only; not evidence of the historical experimental revision or a license grant for all files in this package."
+  },
+  {
+    "repository": "FireRedTeam/FireRedASR2S",
+    "license_file_url": "https://raw.githubusercontent.com/FireRedTeam/FireRedASR2S/main/LICENSE",
+    "file_sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+    "license": "Apache License, Version 2.0",
+    "retrieved": "2026-10-06",
+    "local_file": "FireRedTeam__FireRedASR2S__LICENSE.txt",
+    "scope": "Current upstream license text only; not evidence of the historical experimental revision or a license grant for all files in this package."
+  },
+  {
+    "repository": "espnet/espnet",
+    "license_file_url": "https://raw.githubusercontent.com/espnet/espnet/master/LICENSE",
+    "file_sha256": "4696c3c9551da6fef1368be1e4ed2c80cf13e55448c6dcf2aba9462f5ff29ef5",
+    "license": "Apache License, Version 2.0",
+    "retrieved": "2026-10-06",
+    "local_file": "espnet__espnet__LICENSE.txt",
+    "scope": "Current upstream license text only; not evidence of the historical experimental revision or a license grant for all files in this package."
+  },
+  {
+    "repository": "modelscope/FunASR",
+    "license_file_url": "https://raw.githubusercontent.com/modelscope/FunASR/main/LICENSE",
+    "file_sha256": "f382b62dcc61fc566b9215b1e3b604b539bfd96ed52ae1eeff5090f6dc176057",
+    "license": "MIT",
+    "retrieved": "2026-10-06",
+    "local_file": "modelscope__FunASR__LICENSE.txt",
+    "scope": "Current upstream license text only; not evidence of the historical experimental revision or a license grant for all files in this package."
+  }
+]

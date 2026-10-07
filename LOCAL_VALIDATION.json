@@ -1,0 +1,91 @@
+{
+  "checked": "2026-10-06",
+  "environment": {
+    "platform": "macOS-26.3.2-arm64-arm-64bit",
+    "python": "3.12.14",
+    "torch": "2.5.1",
+    "numpy": "1.26.4",
+    "cuda_available": false,
+    "purpose": "isolated CPU regression environment, not archived inference environment"
+  },
+  "checks": {
+    "python_ast_files": 45,
+    "shell_syntax": {
+      "configs/expanded/funasr_prop_run.sh": "pass"
+    },
+    "demo_cli": {
+      "help": {
+        "exit_code": 0,
+        "pass": true
+      },
+      "no_arguments": {
+        "exit_code": 2,
+        "pass": true
+      },
+      "empty_audio_directory": {
+        "exit_code": 2,
+        "pass": true
+      }
+    },
+    "worker_empty_audio_fails_before_import": "pass",
+    "cpu_regressions": {
+      "command": "python scripts/test_release_regressions.py",
+      "tests": 10,
+      "passed": 10,
+      "failed": 0,
+      "executed_in_both_packages": true,
+      "coverage": [
+        "short utterance preserves 80 Mel bins",
+        "batch temporal padding",
+        "silent, nonsilent and mixed-batch normalization",
+        "frontend import without Tk",
+        "CleanMel loader formats and invalid weights",
+        "included Adapter loads all 14 tensors exactly; invalid weights fail"
+      ],
+      "isolation": "actual source functions/classes executed; neural frontend/STFT substitutes and bundled mask helper isolate Mamba/ESPnet"
+    },
+    "checkpoint": {
+      "bytes": 35399567,
+      "sha256": "2f9d57b232a6f4109cd301f27a650bcf6f385c30f594096b6524148db673363a",
+      "unchanged": true,
+      "cpu_weights_only_load": "pass",
+      "tensors": 631,
+      "frontend_tensors": 617,
+      "preencoder_tensors": 14,
+      "non_finite_tensor_count": 0
+    },
+    "original_archive_unchanged_files": 65,
+    "archived_results_unchanged": true,
+    "audio_files_in_candidate": [],
+    "limited_static_scan": {
+      "author_machine_paths": [],
+      "common_secret_patterns": []
+    },
+    "excluded_baseline_files": [
+      "src/espnet2/asr/frontend/Conv_TasNet.py",
+      "configs/expanded/funasr_ft_convtasnet.yaml",
+      "configs/expanded/funasr_ft_convtasnet_run.sh"
+    ]
+  },
+  "not_verified": [
+    "full Linux/CUDA dependency installation",
+    "full CleanMel/Mamba and backend LLM inference",
+    "training",
+    "benchmark accuracy after numerical fixes"
+  ],
+  "numerical_change": "Time-axis mask fix affects short utterances and padded batches; archived scores are not new measurements of this release.",
+  "release": {
+    "original_code_and_weight_license": "not specified; no general reuse license granted for original contributions or adapted weights",
+    "repository": "https://github.com/FnoY0723/backend-aware-cleanmel-adaptation",
+    "title": "Backend-Aware CleanMel Adaptation for Robust Recognition with Frozen ASR Models",
+    "documentation_status": "prepared for author-authorized upload on 2026-10-07; upload completion is tracked separately",
+    "version": "submission-v1"
+  },
+  "metadata_updated": "2026-10-07",
+  "historical_inference": {
+    "status": "passed before the AAAI submission, confirmed by the authors",
+    "evidence": "author confirmation of the archived inference demo",
+    "separate_from_current_cpu_regressions": true,
+    "corrected_release_gpu_inference_retested": false
+  }
+}

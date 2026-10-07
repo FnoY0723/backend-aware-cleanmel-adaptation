@@ -1,0 +1,25 @@
+# Local runtime and editor artifacts
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.DS_Store
+.vscode/
+.idea/
+.env
+.env.*
+!.env.example
+*.log
+outputs/
+runs/
+wandb/
+*.zip
+# Keep downloaded data and models outside the source tree.
+data/
+models/
+checkpoints/*
+!checkpoints/funasr_prop_frontend.pth
+# Users supply their own audio; dataset clips are not distributed.
+*.wav
+*.flac

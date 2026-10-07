@@ -1,0 +1,20 @@
+cff-version: "1.2.0"
+type: software
+message: "If you use this software, please cite it using these metadata."
+title: "Backend-Aware CleanMel Adaptation for Robust Recognition with Frozen ASR Models"
+authors:
+  - family-names: "Fang"
+    given-names: "Ying"
+  - family-names: "Shao"
+    given-names: "Nian"
+  - family-names: "Li"
+    given-names: "Xiaofei"
+repository-code: "https://github.com/FnoY0723/backend-aware-cleanmel-adaptation"
+url: "https://github.com/FnoY0723/backend-aware-cleanmel-adaptation"
+keywords:
+  - "automatic speech recognition"
+  - "speech enhancement"
+  - "frontend adaptation"
+  - "CleanMel"
+version: "submission-v1"
+# No publication DOI or journal acceptance is claimed.

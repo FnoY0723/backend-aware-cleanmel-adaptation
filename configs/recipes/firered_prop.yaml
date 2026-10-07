@@ -1,0 +1,66 @@
+encoder: fireredasr
+encoder_conf:
+  idim: 80
+  d_model: 1280
+  n_head: 20
+  n_layers: 16
+  residual_dropout: 0.0
+  dropout_rate: 0.0
+  kernel_size: 33
+
+model_conf:
+  ctc_weight: 1.0
+  lsm_weight: 0.1
+  length_normalized_loss: false
+  adptor_target_source: noisy
+  adptor_weight_start: 1.0
+  adptor_weight_end: 1.0
+
+frontend: cleanmel_funasr
+frontend_conf:
+  model_path: checkpoints/cleanmel/epoch149_metric-0.0098.ckpt
+  frame_length: 32
+  frame_shift: 16
+
+preencoder: linear
+preencoder_conf:
+  input_size: 80
+  output_size: 80
+
+freeze_param: [encoder, decoder, ctc]
+unused_parameters: true
+seed: 2026
+use_amp: true
+num_workers: 4
+batch_type: numel
+batch_bins: 20000000
+accum_grad: 5
+max_epoch: 50
+init: none
+best_model_criterion:
+  - [valid, cer_ctc, min]
+keep_nbest_models: 100
+nbest_averaging_interval: 100
+num_att_plot: 0
+
+optim: adamw
+optim_conf:
+  lr: 0.0001
+  weight_decay: 0.01
+scheduler: warmuplr
+scheduler_conf:
+  warmup_steps: 500
+num_iters_per_epoch: 1000
+log_interval: 100
+
+specaug: specaug
+specaug_conf:
+  apply_time_warp: true
+  time_warp_window: 5
+  time_warp_mode: bicubic
+  apply_freq_mask: false
+  freq_mask_width_range: [0, 27]
+  num_freq_mask: 2
+  apply_time_mask: false
+  time_mask_width_ratio_range: [0.0, 0.05]
+  num_time_mask: 2

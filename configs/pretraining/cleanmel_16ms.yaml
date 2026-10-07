@@ -1,0 +1,95 @@
+seed_everything: 42
+
+trainer:
+  accelerator: gpu
+  strategy: ddp_find_unused_parameters_false
+  devices: 0,1,2,3,4,5,6,7
+  num_nodes: 1
+  precision: 32
+  max_epochs: 150
+  num_sanity_val_steps: 3
+  log_every_n_steps: 40
+  accumulate_grad_batches: 1
+  gradient_clip_val: 10
+  gradient_clip_algorithm: norm
+  deterministic: true
+  benchmark: true
+
+model:
+  arch:
+    class_path: model.arch.cleanmel_funasr.CleanMel
+    init_args:
+      dim_input: 2
+      dim_output: 1
+      n_layers: 16
+      n_freqs: 257
+      n_mels: 80
+      layer_linear_freq: 1
+      encoder_kernel_size: 5
+      dim_hidden: 120
+      dropout: [0.0, 0.0, 0.0]
+      f_kernel_size: 5
+      f_conv_groups: 8
+      padding: zeros
+      mamba_state: 16
+      mamba_conv_kernel: 4
+      online: false
+      sr: 16000
+      n_fft: 512
+  input_stft:
+    class_path: model.io.stft.FunasrInputSTFT
+    init_args:
+      fs: 16000
+      window: hamming
+      n_mels: 80
+      frame_length: 32
+      frame_shift: 16
+      dither: 0.0
+      upsacle_samples: true
+      snip_edges: true
+      n_fft: 512
+  target_stft:
+    class_path: model.io.stft.FunasrTargetMel
+    init_args:
+      fs: 16000
+      window: hamming
+      n_mels: 80
+      frame_length: 32
+      frame_shift: 16
+      dither: 0.0
+      n_fft: 512
+  optimizer: [AdamW, {lr: 0.001, weight_decay: 0.01}]
+  lr_scheduler: [ExponentialLR, {gamma: 0.99}]
+  write_examples: 200
+  exp_name: logs/cleanmel_16ms
+  log_eps: 0.001
+  metrics: [DNSMOS]
+
+data:
+  class_path: data_loader.SPencn_NSdns_RIRreal.CleanMelDataModule
+  init_args:
+    datasets: [SimTrain, SimVal, SimTest, [SimTest]]
+    speech_dir: data/clean_speech
+    noise_dir: data/noise
+    rir_dir: data/rir
+    audio_time_len: [4.0, 4.0, null]
+    snr: [-5.0, 20.0]
+    batch_size: [4, 20]
+    num_workers: 10
+    collate_func: data_loader.utils.collate_func.default_collate_func
+    seeds: [null, 2]
+    pin_memory: true
+    prefetch_factor: 5
+    persistent_workers: false
+    dataset_len: [100000, 3000, 3000]
+    no_reverb_prob: 0.2
+
+model_checkpoint:
+  filename: epoch{epoch}_metric{val/metric:.4f}
+  monitor: val/metric
+  save_last: true
+  save_top_k: -1
+  mode: max
+  every_n_epochs: 1
+
+ckpt_path: null
